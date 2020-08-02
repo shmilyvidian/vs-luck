@@ -2,6 +2,7 @@ import { action } from 'mobx'
 
 class CommonStore {
     @action public setData = (key, res, storeInstance,removeSpace = false) => {
+        console.log(key,'res',res)
         const REG_EXP = /(^\s*)|(\s*$)/g
         let data = removeSpace ? (res).replace(REG_EXP,'') : res
         let keys = key.split('.')

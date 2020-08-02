@@ -1,5 +1,5 @@
 
-import url from "qs";
+import url from "qs"
 
 /**
  * 生成带参数查询的url

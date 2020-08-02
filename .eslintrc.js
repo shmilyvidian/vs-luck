@@ -1,3 +1,7 @@
 module.exports = {
-  'extends': ['taro/react']
+  'extends': ['taro/react'],
+  'rules': {
+    'import/no-commonjs': off,
+    'react/sort-comp': off
+  }
 }

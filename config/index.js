@@ -1,11 +1,15 @@
+import path from 'path'
+
 const config = {
   projectName: 'vs-luck',
   date: '2020-8-2',
   designWidth: 750,
   deviceRatio: {
-    640: 2.34 / 2,
-    750: 1,
-    828: 1.81 / 2
+    // 640: 2.34 / 2,
+    // 750: 1,
+    // 828: 1.81 / 2
+    '750': 1/2,
+    '375': 1, // 这里我使用375作为100% 有需要自行更改
   },
   sourceRoot: 'src',
   outputRoot: 'dist',
@@ -20,11 +24,11 @@ const config = {
   },
   framework: 'react',
   alias: {
-    '@/components': 'src/components',
-    '@/utils': 'src/utils',
-    '@/styles': 'src/styles',
-    '@/store': 'src/store',
-    "@/assets":'src/assets'
+    '@/components': path.resolve(__dirname, '..', 'src/components'),
+    '@/utils': path.resolve(__dirname, '..', 'src/utils'),
+    '@/styles': path.resolve(__dirname, '..', 'src/styles'),
+    '@/store': path.resolve(__dirname, '..', 'src/store'),
+    "@/assets":path.resolve(__dirname, '..', 'src/assets'),
   },
   mini: {
     postcss: {
@@ -47,6 +51,16 @@ const config = {
           generateScopedName: '[name]__[local]___[hash:base64:5]'
         }
       }
+    },
+    webpackChain(chain) {
+      // linaria/loader 选项详见 https://github.com/callstack/linaria/blob/master/docs/BUNDLERS_INTEGRATION.md#webpack
+      chain.module
+        .rule('script')
+        .use('linariaLoader')
+        .loader('linaria/loader')
+        .options({
+          sourceMap: process.env.NODE_ENV !== 'production',
+        })
     }
   },
   h5: {
@@ -69,7 +83,7 @@ const config = {
   }
 }
 
-module.exports = function (merge) {
+export default function (merge) {
   if (process.env.NODE_ENV === 'development') {
     return merge({}, config, require('./dev'))
   }
