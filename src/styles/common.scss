@@ -1,0 +1,70 @@
+.d_f_c {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.d_f_r {
+  display: flex;
+  flex-direction: row;
+}
+
+.ellipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+// 清除浮动
+.clearfix {
+  &:after {
+    content: "";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+  }
+}
+
+/* margin, padding类样式 */
+.p-8 {
+  padding: 8px;
+}
+
+.p_h_8 {
+  padding-left: 8px;
+  padding-right: 8px;
+}
+
+.mt-8 {
+  margin-top: 8px;
+}
+
+.ml-4 {
+  margin-left: 4px;
+}
+
+.ml-8 {
+  margin-left: 8px;
+}
+
+.m_v_24 {
+  margin-top: 24px;
+  margin-bottom: 24px;
+}
+
+/*鼠标状态*/
+.cursor__pointer {
+  cursor: pointer;
+}
+
+/*display*/
+.d_ib {
+  display: inline-block;
+}
+
+/*vetical*/
+.v_c {
+  vertical-align: center;
+}
