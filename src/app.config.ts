@@ -5,7 +5,12 @@ export default {
    // 分包
   subPackages: [
     {
-      // 浏览器页
+      // 活动页
+      root: 'pages/activity',
+      pages: ['index']
+    },
+    {
+      // 聊天页
       root: 'pages/chart',
       pages: ['index']
     }
