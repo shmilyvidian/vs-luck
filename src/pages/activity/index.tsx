@@ -1,19 +1,17 @@
 import React, { Component } from 'react'
-import { View, Text } from '@tarojs/components'
 import { observer, inject } from 'mobx-react'
 import { HomeStore } from '@/store/homeStore'
-import './index.scss'
 
-type propsType = {
-  store: {
-    homeStore,
-  }
-}
+// 定义样式
+import { IndexMain, ItemWrapper } from './indexSty'
 
-type stateType = {
+// 定义数据类型
+import { propsType, stateType, activityListDataType } from './type'
 
-}
+import ActivityItem from './item/index'
 
+
+// 定义类型
 interface Index {
   props: propsType
   state: stateType
@@ -23,26 +21,40 @@ interface Index {
 @observer
 class Index extends Component {
   private homeStore: HomeStore
-  constructor(props){
+  constructor(props) {
     super(props)
     this.homeStore = props.store.homeStore
+    this.state = {
+      activityListData: [
+        {
+          title: '和你去旅行 | 去清远清凉一夏，叫上小伙伴体验激情峡谷漂流！',
+          date: '2020年7月13日'
+        }
+      ]
+    }
   }
-  componentWillMount () { }
+  componentWillMount() { }
 
-  componentDidMount () { }
+  componentDidMount() { }
 
-  componentWillUnmount () { }
+  componentWillUnmount() { }
 
-  componentDidShow () { }
+  componentDidShow() { }
 
-  componentDidHide () { }
+  componentDidHide() { }
 
-  render () {
-    const { name } = this.homeStore
+  render() {
+    const { activityListData } = this.state
+
+    const activityList = activityListData.map((item: activityListDataType) => {
+      return (
+        <ActivityItem key="index" data={item}></ActivityItem>
+      )
+    })
     return (
-      <View className='index'>
-        <Text>{name}</Text>
-      </View>
+      <IndexMain>
+        {activityList}
+      </IndexMain>
     )
   }
 }
