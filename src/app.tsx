@@ -4,13 +4,17 @@ import { Provider } from 'mobx-react'
 import store from './store'
 
 import './app.scss'
+import { View } from '@tarojs/components'
 
 
 class App extends React.Component {
   render () {
     return (
       <Provider store={store}>
-        {this.props.children}
+        <View>
+          hello
+          {this.props.children}
+        </View>
       </Provider>
     )
   }
