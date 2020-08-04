@@ -15,7 +15,7 @@ export class ActivityCard extends React.PureComponent<IProps> {
     constructor(IProps){
         super(IProps)
     }
-    onGoDetail = () =>{
+    onGoDetail = () => {
         Taro.navigateTo(gennerateTaroNavigateParams("/pages/activity/detail/index", { from: 'activity' }))
     }
     render() {

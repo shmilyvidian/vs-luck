@@ -250,7 +250,7 @@ class Index extends Component<IProps, IState> {
         )
       } else if(currentTabIndex === 2){
         return (
-          <ActivityCard activityCardData = {activityCardData}/> 
+          <ActivityCard activityCardData = {activityCardData}/>
         )
       }
   }
