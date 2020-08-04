@@ -11,6 +11,7 @@ const center = {
 export const IndexMain = styled(View)`
     width: 375px;
     height:100%;
+    padding-top: 20px;
     ${center}
 `
 

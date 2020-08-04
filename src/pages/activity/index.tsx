@@ -3,7 +3,7 @@ import { observer, inject } from 'mobx-react'
 import { HomeStore } from '@/store/homeStore'
 
 // 定义样式
-import { IndexMain, ItemWrapper } from './indexSty'
+import { IndexMain } from './indexSty'
 
 // 定义数据类型
 import { propsType, stateType, activityListDataType } from './type'
@@ -27,6 +27,34 @@ class Index extends Component {
     this.state = {
       activityListData: [
         {
+          title: '和你去旅行 | 去清远清凉一夏，叫上小伙伴体验激情峡谷漂流！',
+          date: '2020年7月13日'
+        },
+        {
+          title: '和你去旅行 | 去清远清凉一夏，叫上小伙伴体验激情峡谷漂流！',
+          date: '2020年7月13日'
+        },{
+          title: '和你去旅行 | 去清远清凉一夏，叫上小伙伴体验激情峡谷漂流！',
+          date: '2020年7月13日'
+        },{
+          title: '和你去旅行 | 去清远清凉一夏，叫上小伙伴体验激情峡谷漂流！',
+          date: '2020年7月13日'
+        },{
+          title: '和你去旅行 | 去清远清凉一夏，叫上小伙伴体验激情峡谷漂流！',
+          date: '2020年7月13日'
+        },{
+          title: '和你去旅行 | 去清远清凉一夏，叫上小伙伴体验激情峡谷漂流！',
+          date: '2020年7月13日'
+        },{
+          title: '和你去旅行 | 去清远清凉一夏，叫上小伙伴体验激情峡谷漂流！',
+          date: '2020年7月13日'
+        },{
+          title: '和你去旅行 | 去清远清凉一夏，叫上小伙伴体验激情峡谷漂流！',
+          date: '2020年7月13日'
+        },{
+          title: '和你去旅行 | 去清远清凉一夏，叫上小伙伴体验激情峡谷漂流！',
+          date: '2020年7月13日'
+        },{
           title: '和你去旅行 | 去清远清凉一夏，叫上小伙伴体验激情峡谷漂流！',
           date: '2020年7月13日'
         }
