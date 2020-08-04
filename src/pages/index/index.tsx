@@ -24,6 +24,8 @@ import { InfoCard } from '@/components/InfoCard'
 import { IphonexView } from '@/components/IphonexView'
 import { TabBar } from '@/components/TabBar'
 
+import Activity from '../activity/index'
+
 export enum EPageStatus {
   signStatus = "signStatus",
   matchStatus = "matchStatus",
@@ -212,6 +214,10 @@ class Index extends Component<IProps, IState> {
           <InfoCard
             cardData = {cardData}
           />
+        )
+      } else if(currentTabIndex === 2){
+        return (
+          <Activity /> 
         )
       }
   }
