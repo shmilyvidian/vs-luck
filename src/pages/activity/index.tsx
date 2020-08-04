@@ -74,9 +74,9 @@ class Index extends Component {
   render() {
     const { activityListData } = this.state
 
-    const activityList = activityListData.map((item: activityListDataType) => {
+    const activityList = activityListData.map((item: activityListDataType,index:any) => {
       return (
-        <ActivityItem key="index" data={item}></ActivityItem>
+        <ActivityItem key={index} data={item}></ActivityItem>
       )
     })
     return (
