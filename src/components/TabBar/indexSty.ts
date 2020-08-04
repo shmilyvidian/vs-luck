@@ -19,16 +19,6 @@ export const IndexTabBar = styled(View)`
     left: calc(100% - 270)/2 + 'px';
     box-shadow: 0 2px 20px 0 rgba(0,0,0,0.20);
     border-radius: 33px;
-    animation: translateY900 1s ease-in-out forwards;
-
-    @keyframes translateY900 {
-        from {
-            transform: translate(0, 800px);
-        }
-        to {
-            transform: translate(0, 0px);
-        }
-    }
 `
 
 export const IndexTabBarIcon = styled(Image)`

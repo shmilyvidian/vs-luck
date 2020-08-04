@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { css } from 'linaria'
 import { View } from '@tarojs/components'
 import {
     tabItem,
@@ -11,6 +12,18 @@ import chatGray from '@/assets/images/chat-gray.png'
 import activity from '@/assets/images/activity.png'
 import activityGray from '@/assets/images/activity-gray.png'
 import G from '@/assets/images/G.png'
+
+const translateY900 = css`
+  animation: translateY900 1s ease-in-out forwards;
+  @keyframes translateY900 {
+      from {
+          transform: translate(0, 800px);
+      }
+      to {
+          transform: translate(0, 0px);
+      }
+  }
+`
 
 type ITab = {
     cls: string
@@ -39,13 +52,6 @@ export class TabBar extends Component<IProps, IState>{
           }
       }
 
-      shouldComponentUpdate(nextProps){
-        if(this.props.currentTabIndex === undefined && !isNaN(Number(nextProps.currentTabIndex))){
-          return false
-        }
-        return true
-      }
-
       onClickTab = (currentTabIndex: number) => {
 
         const { callback } = this.props
@@ -60,9 +66,7 @@ export class TabBar extends Component<IProps, IState>{
             tabs.forEach((o,i)=> i === 1 ? o.url : (o.url = isIncludeGray(o) ? o.url : o.url.substring(0, (o.url.indexOf('.png')))+'-gray.png'))
             tabs[currentTabIndex].url =  tabIcons[currentTabIndex]
           }
-          this.setState({tabs}, ()=>{
-            console.log(tabs)
-          })
+          this.setState({tabs})
         }
 
         typeof callback && callback.call(null, currentTabIndex)
@@ -74,7 +78,7 @@ export class TabBar extends Component<IProps, IState>{
         return (
             !isShow ? null :
             (
-                <IndexTabBar>
+                <IndexTabBar className={isNaN(Number(this.props.currentTabIndex)) ? translateY900 : ''}>
                     {
                         tabs.map((o,i)=>{
                         return (
