@@ -8,6 +8,7 @@ const center = {
     flexDirection: 'column',
 }
 
+
 export const IndexMain = styled(View)`
     width: 375px;
     height:100%;
@@ -19,18 +20,6 @@ export const IndexLogo = styled(Image)`
     display: block;
     width: 218px;
     height: 50px;
-    animation: translateY60 .5s linear forwards;
-    margin-bottom: 80px;
-
-    @keyframes translateY60 {
-    from {
-        transform: translate(0, -152px);
-        margin-top: 0;
-    }
-    to {
-        transform: translate(0, 0);
-        margin-top: 108px;
-    }
 }
 `
 
@@ -94,4 +83,32 @@ export const SignBtn = styled(View)`
             opacity: 1;
         }
     }
+`
+
+export const IndexTabBar = styled(View)`
+    width: 270px;
+    height: 50px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    position: fixed;
+    bottom: 32px;
+    left: calc(100% - 270)/2 + 'px';
+    box-shadow: 0 2px 20px 0 rgba(0,0,0,0.20);
+    border-radius: 33px;
+    animation: translateY900 1s ease-in-out forwards;
+
+    @keyframes translateY900 {
+        from {
+            transform: translate(0, 800px);
+        }
+        to {
+            transform: translate(0, 0px);
+        }
+    }
+`
+
+export const IndexTabBarIcon = styled(Image)`
+    
+}
 `
