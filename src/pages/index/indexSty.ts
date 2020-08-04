@@ -1,5 +1,66 @@
 import { styled } from 'linaria/react'
 import { Image, Input, View } from '@tarojs/components'
+import { css } from 'linaria'
+
+export const tabItem = css`
+   width: 26px;
+  height: 26px;
+`
+export const tabItem_GBox = css`
+  width: 68px;
+  height: 68px;
+  animation: r0 1.4s linear infinite;
+    @keyframes r0 {
+    0% {
+        border-radius: 50%;
+        box-shadow: 0 0 8px 8px rgba(247, 206, 43, 0.2), 0 0 8px 8p rgba(247, 206, 43, 0.2), 0 0 8px 8px rgba(247, 206, 43, 0.2);
+    }
+    100% {
+        border-radius: 50%;
+        box-shadow: 0 0 16px 16px rgba(247, 206, 43, 0.2), 0 0 16px 16px rgba(247, 206, 43, 0.2), 0 0 16px 16px rgba(247, 206, 43, 0.2);
+    }
+    100% {
+        border-radius: 50%;
+        box-shadow: 0 0 8px 8px rgba(247, 206, 43, 0.2), 0 0 8px 8px rgba(247, 206, 43, 0.2), 0 0 8px 8px rgba(247, 206, 43, 0.2);
+    }
+    }
+`
+
+export const matchBox = css`
+  margin-top: 108px;
+`
+
+export const translateY60 = css`
+  animation: translateY60 .5s linear forwards;
+  padding-bottom: 80px;
+  @keyframes translateY60 {
+      from {
+        transform:  translate(0, -152px);
+        margin-top: 0
+      }
+      to {
+          transform:  translate(0, 0);
+          margin-top: 108px
+
+      }
+    }
+`
+
+export const translateY90 = css`
+  animation: translateY90 .5s linear forwards;
+  margin-bottom: 208px;
+  width: 272px;
+  height: 64px;
+  @keyframes translateY90 {
+      from {
+        transform:  translate(0, -152px);
+        margin-top: 0
+      }
+      to {
+          transform:  translate(0, 167px);
+      }
+    }
+`
 
 const center = {
     display: 'flex',
@@ -83,32 +144,4 @@ export const SignBtn = styled(View)`
             opacity: 1;
         }
     }
-`
-
-export const IndexTabBar = styled(View)`
-    width: 270px;
-    height: 50px;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    position: fixed;
-    bottom: 32px;
-    left: calc(100% - 270)/2 + 'px';
-    box-shadow: 0 2px 20px 0 rgba(0,0,0,0.20);
-    border-radius: 33px;
-    animation: translateY900 1s ease-in-out forwards;
-
-    @keyframes translateY900 {
-        from {
-            transform: translate(0, 800px);
-        }
-        to {
-            transform: translate(0, 0px);
-        }
-    }
-`
-
-export const IndexTabBarIcon = styled(Image)`
-    
-}
 `

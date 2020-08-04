@@ -5,4 +5,4 @@ deploy_versions/
 node_modules/
 .DS_Store
 .linaria-cache/
-.linaria-cache/src/pages/index/indexSty.linaria.css
+*.linaria.css
