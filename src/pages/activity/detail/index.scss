@@ -1,12 +1,20 @@
 .title-wrapper {
   padding: 20px 20px 30px 20px;
   background-image: url('../../../assets/images/detail-bg.png');
-  background-size: 100% 100% ;
+  background-size: 100% 100%;
+  
 }
 
-.swiper-img{
+.swiper-wrapper {
+  margin-top: 10px;
+  height: 130px;
+}
+
+.swiper-img {
   width: 230px;
   height: 130px;
+  border-radius: 10px;
+  overflow: hidden;
 }
 
 .title {
@@ -20,4 +28,37 @@
   font-size: 12px;
   color: #B9BBBE;
   margin-bottom: 6px;
+}
+
+
+.section-title {
+  font-size: 16px;
+  color: #F7CE2B;
+  font-weight: bold;
+  margin-bottom: 12px;
+}
+
+.notice-wrapper {
+  margin: 20px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba($color: #979797, $alpha: 0.2);
+}
+
+.section-content {
+  font-size: 14px;
+  color: #7B7F82;
+}
+
+.detail-img{
+  width: 335px;
+  height: 222px;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-top: 8px;
+}
+
+.qrcode{
+  width: 129px;
+  height: 129px;
+  margin-top: 10px;
 }
