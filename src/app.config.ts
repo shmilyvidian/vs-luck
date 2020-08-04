@@ -1,15 +1,11 @@
 export default {
   pages: [
     'pages/index/index',
-    'pages/home/index'
+    'pages/home/index',
+    'pages/activity/detail/index'
   ],
    // 分包
   subPackages: [
-    {
-      // 活动页
-      root: 'pages/activity',
-      pages: ['index']
-    },
     {
       // 聊天页
       root: 'pages/chart',

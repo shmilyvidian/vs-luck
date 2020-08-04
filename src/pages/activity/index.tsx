@@ -61,15 +61,6 @@ class Index extends Component {
       ]
     }
   }
-  componentWillMount() { }
-
-  componentDidMount() { }
-
-  componentWillUnmount() { }
-
-  componentDidShow() { }
-
-  componentDidHide() { }
 
   render() {
     const { activityListData } = this.state

@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
+import Taro from '@tarojs/taro'
 import { observer } from 'mobx-react'
+import { gennerateTaroNavigateParams } from '@/utils/urlParam'
 
 
 import { TitleWrapper, ItemWrapper, LeftItem ,DateWrapper} from './indexSty'
@@ -21,21 +23,17 @@ class ActivityItem extends Component {
   constructor(props) {
     super(props)
   }
-  componentWillMount() { }
 
-  componentDidMount() { }
-
-  componentWillUnmount() { }
-
-  componentDidShow() { }
-
-  componentDidHide() { }
+  // 跳详情页
+  link(){
+    Taro.navigateTo(gennerateTaroNavigateParams("/pages/activity/detail/index", { from: 'activity' }))
+  }
 
   render() {
     const { data } = this.props
 
     return (
-      <ItemWrapper>
+      <ItemWrapper onClick={this.link}>
         <LeftItem src={activeImg}></LeftItem>
         <View>
           <TitleWrapper>{data.title}</TitleWrapper>
