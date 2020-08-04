@@ -13,7 +13,7 @@ import activity from '@/assets/images/activity.png'
 import activityGray from '@/assets/images/activity-gray.png'
 import G from '@/assets/images/G.png'
 
-const translateY900 = css`
+const translateY800 = css`
   animation: translateY900 1s ease-in-out forwards;
   @keyframes translateY900 {
       from {
@@ -78,7 +78,7 @@ export class TabBar extends Component<IProps, IState>{
         return (
             !isShow ? null :
             (
-                <IndexTabBar className={isNaN(Number(this.props.currentTabIndex)) ? translateY900 : ''}>
+                <IndexTabBar className={isNaN(Number(this.props.currentTabIndex)) ? translateY800 : ''}>
                     {
                         tabs.map((o,i)=>{
                         return (

@@ -23,7 +23,6 @@ export const IndexTabBar = styled(View)`
 
 export const IndexTabBarIcon = styled(Image)`
 
-}
 `
 
 export const tabItem_GBox = css`
