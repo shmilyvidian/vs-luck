@@ -1,12 +1,6 @@
 import { styled } from 'linaria/react'
 import { Image, View } from '@tarojs/components'
 
-const center = {
-  display: 'flex',
-  justifyContent: 'center',
-  alignItems: 'center',
-  flexDirection: 'column',
-}
 
 export const TitleWrapper = styled(View)`
   width: 213px;

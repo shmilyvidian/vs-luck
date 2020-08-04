@@ -69,7 +69,7 @@ export class TabBar extends Component<IProps, IState>{
           this.setState({tabs})
         }
 
-        typeof callback && callback.call(null, currentTabIndex)
+        typeof callback === 'function' && callback.call(null, currentTabIndex)
       }
 
       render(){

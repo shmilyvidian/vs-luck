@@ -1,5 +1,5 @@
 import { styled } from 'linaria/react'
-import { Image, Input, View } from '@tarojs/components'
+import { View } from '@tarojs/components'
 
 const center = {
   display: 'flex',
