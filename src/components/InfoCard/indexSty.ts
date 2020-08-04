@@ -16,8 +16,23 @@ export const InfoCardBox = styled(View)`
         display: flex;
         flex-direction: row;
         justify-content: space-between;
+        &_name{
+            font-family: PingFangSC-Semibold;
+            font-size: 16px;
+            color: #00162B;
+            letter-spacing: 0;
+        }
+        &-time{
+            font-family: PingFangSC-Regular;
+            font-size: 12px;
+            color: #B9BBBE;
+            letter-spacing: 0;
+        }
     }
     .card_bottom{
-       
+        font-family: PingFangSC-Regular;
+        font-size: 14px;
+        color: #7B7F82;
+        letter-spacing: 0;
     }
 `

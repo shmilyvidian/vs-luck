@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
+import { View, Text } from '@tarojs/components'
 import { InfoCardBox } from './indexSty'
-import { View } from '@tarojs/components'
+import { EmptyView } from '../EmptyView'
 
 type Icard =  {
     name: string
@@ -8,34 +9,30 @@ type Icard =  {
     info: string
 }
 
-type propsType = {
+interface IProps {
     cardData: Icard[]
 }
 
-interface InfoCard {
-    props: propsType
-}
+export class InfoCard extends Component<IProps>{
 
-export class InfoCard extends Component{
-
-    render(){
+      render(){
         const { cardData = [] } = this.props
         return (
             <View>
                 {
+                    cardData.length ?
                     cardData.map((o,i)=>
-                    <InfoCardBox key={i}>
-                        <View className="card_top">
-                            <View>{o.name}</View>
-                            <View>{o.time}</View>
-                        </View>
-                        <View>
-                            {
-                                o.info
-                            }
-                        </View>
-                    </InfoCardBox>
-                    )}
+                        <InfoCardBox key={i}>
+                            <View className="card_top">
+                                <Text className="card_top_name">{o.name}</Text>
+                                <Text className="card_top_time">{o.time}</Text>
+                            </View>
+                            <Text className="card_bottom">{o.info}
+                            </Text>
+                        </InfoCardBox>
+                    ) :
+                    <EmptyView text="啊哦，还没有好姻缘快去匹配发现一下吧" />
+                }
             </View>
         )
     }
