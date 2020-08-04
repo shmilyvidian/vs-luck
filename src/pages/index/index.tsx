@@ -23,8 +23,7 @@ import {
 import { InfoCard } from '@/components/InfoCard'
 import { IphonexView } from '@/components/IphonexView'
 import { TabBar } from '@/components/TabBar'
-
-import Activity from '../activity/index'
+import { ActivityCard } from '@/components/ActivityCard'
 
 export enum EPageStatus {
   signStatus = "signStatus",
@@ -143,7 +142,7 @@ class Index extends Component<IProps, IState> {
       return (
         <SignBtn
           active={isDoneSign}
-          className={isMatchView && matchBox}
+          className={isMatchView ? matchBox : ''}
           onClick={this.onClickSign}
         >
           {isMatchView ? '匹配' : '开启好姻缘'}
@@ -208,6 +207,40 @@ class Index extends Component<IProps, IState> {
         info: '哈哈哈'
       }
     ]
+    const activityCardData = [
+      {
+        title: '和你去旅行 | 去清远清凉一夏，叫上小伙伴体验激情峡谷漂流！',
+        date: '2020年7月13日'
+      },
+      {
+        title: '和你去旅行 | 去清远清凉一夏，叫上小伙伴体验激情峡谷漂流！',
+        date: '2020年7月13日'
+      },{
+        title: '和你去旅行 | 去清远清凉一夏，叫上小伙伴体验激情峡谷漂流！',
+        date: '2020年7月13日'
+      },{
+        title: '和你去旅行 | 去清远清凉一夏，叫上小伙伴体验激情峡谷漂流！',
+        date: '2020年7月13日'
+      },{
+        title: '和你去旅行 | 去清远清凉一夏，叫上小伙伴体验激情峡谷漂流！',
+        date: '2020年7月13日'
+      },{
+        title: '和你去旅行 | 去清远清凉一夏，叫上小伙伴体验激情峡谷漂流！',
+        date: '2020年7月13日'
+      },{
+        title: '和你去旅行 | 去清远清凉一夏，叫上小伙伴体验激情峡谷漂流！',
+        date: '2020年7月13日'
+      },{
+        title: '和你去旅行 | 去清远清凉一夏，叫上小伙伴体验激情峡谷漂流！',
+        date: '2020年7月13日'
+      },{
+        title: '和你去旅行 | 去清远清凉一夏，叫上小伙伴体验激情峡谷漂流！',
+        date: '2020年7月13日'
+      },{
+        title: '和你去旅行 | 去清远清凉一夏，叫上小伙伴体验激情峡谷漂流！',
+        date: '2020年7月13日'
+      }
+    ]
     if( pageStatus === EPageStatus.homeStatus)
       if(currentTabIndex === 0){
         return (
@@ -217,7 +250,7 @@ class Index extends Component<IProps, IState> {
         )
       } else if(currentTabIndex === 2){
         return (
-          <Activity /> 
+          <ActivityCard activityCardData = {activityCardData}/> 
         )
       }
   }
