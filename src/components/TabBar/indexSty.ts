@@ -8,10 +8,12 @@ export const IndexTabBar = styled(View)`
   justify-content: space-around;
   align-items: center;
   position: fixed;
+  z-index: 10;
   bottom: 32px;
   left: calc(100% - 270) / 2 + "px";
   box-shadow: 0 2px 20px 0 rgba(0, 0, 0, 0.2);
   border-radius: 33px;
+  transition: transform 1s ease-in-out;
 
   .item-group-btn {
     display: flex;
@@ -79,6 +81,7 @@ export const IndexTabBar = styled(View)`
     border-radius: 100%;
     background-color: #f7ce2b;
     .item-group-btn-image {
+      position: relative;
       z-index: 3;
       width: 28px;
       height: 24px;

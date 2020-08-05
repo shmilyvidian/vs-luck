@@ -31,7 +31,7 @@ export const gennerateQueryUrlPath = (
 
 export const gennerateTaroNavigateParams = (
   path: string,
-  query: { [key: string]: string | number }
+  query?: { [key: string]: string | number }
 ) => {
   if(path.indexOf('/') < 0) {
     // 缩写 默认补全处理

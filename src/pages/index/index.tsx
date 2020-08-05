@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Taro from "@tarojs/taro";
+import { gennerateTaroNavigateParams } from "@/utils/urlParam";
 import { Image } from "@tarojs/components";
 import { observer, inject } from "mobx-react";
 import { HomeStore } from "@/store/homeStore";
@@ -84,6 +85,7 @@ class Index extends Component<IProps, IState> {
 
     this.setState({
       pageStatus: EPageStatus.matchStatus,
+      currentTabIndex: 1,
     });
     // Taro.navigateTo(gennerateTaroNavigateParams("home", { from: 'sign' }))
   };
@@ -279,8 +281,8 @@ class Index extends Component<IProps, IState> {
   };
   // 匹配完成
   timeOutSuccess() {
+    Taro.navigateTo(gennerateTaroNavigateParams("chart"));
     this.setState({ startMatch: false });
-    console.log("匹配完成");
   }
   render() {
     const { pageStatus, currentTabIndex } = this.state;
@@ -293,15 +295,13 @@ class Index extends Component<IProps, IState> {
         {this.renderBtn()}
 
         {this.renderTimeOutView()}
-        <TabBar
-          pageStatus={pageStatus}
-          currentTabIndex={currentTabIndex}
-          isShow={
-            pageStatus === EPageStatus.matchStatus ||
-            pageStatus === EPageStatus.homeStatus
-          }
-          callback={this.onClickTab}
-        />
+        {typeof currentTabIndex === "number" && (
+          <TabBar
+            pageStatus={pageStatus}
+            currentTabIndex={currentTabIndex}
+            callback={this.onClickTab}
+          />
+        )}
 
         {this.renderTabContent()}
 
