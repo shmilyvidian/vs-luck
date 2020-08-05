@@ -12,6 +12,7 @@ export const IndexTabBar = styled(View)`
   left: calc(100% - 270) / 2 + "px";
   box-shadow: 0 2px 20px 0 rgba(0, 0, 0, 0.2);
   border-radius: 33px;
+  background: #fff;
 
   .item-group-btn {
     display: flex;

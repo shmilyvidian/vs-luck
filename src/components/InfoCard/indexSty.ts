@@ -12,6 +12,7 @@ export const InfoCardBox = styled(View)`
     border-radius: 10px;
     padding:12px 16px 6px 14px;
     margin-top: 12px;
+
     .card_top{
         display: flex;
         flex-direction: row;
@@ -36,3 +37,20 @@ export const InfoCardBox = styled(View)`
         letter-spacing: 0;
     }
 `
+
+export const LeftIn = styled(View)<{left: any}>`
+animation: leftIn 1s ease;
+
+@keyframes leftIn {
+  from {
+    transform: translatex(${ props => ((props.left - 1)  * 1000)}px);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0px);
+    opacity:1;
+  }
+}
+`
+
