@@ -36,17 +36,5 @@ export const ItemWrapper = styled(View)`
   box-sizing: border-box;
   padding: 12px;
   margin-bottom: 12px;
-  animation: leftIn 1s ease;
-
-  @keyframes leftIn {
-    from {
-      transform: translatex(500px);
-      opacity: 0;
-    }
-
-    to {
-      transform: translateY(0px);
-      opacity: 1;
-    }
-  }
+  
 `
