@@ -2,7 +2,7 @@ import React from 'react'
 import { View } from '@tarojs/components'
 import { TitleWrapper, ItemWrapper, LeftItem, DateWrapper } from './activityItemSty'
 import { activityListDataType } from './type'
-import activeImg from '@/assets/images/active.png'
+import activeImg from '@/assets/images/test.jpeg'
 
 interface IProps{
     data: activityListDataType
