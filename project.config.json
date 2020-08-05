@@ -59,15 +59,22 @@
 			"list": [
 				{
 					"id": 0,
-					"name": "pages/activity/detail/index",
+					"name": "活动详情",
 					"pathName": "pages/activity/detail/index",
 					"query": "",
 					"scene": null
 				},
 				{
 					"id": 1,
-					"name": "pages/index/index",
+					"name": "首页",
 					"pathName": "pages/index/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "chart",
+					"pathName": "pages/chart/index",
 					"query": "",
 					"scene": null
 				}
