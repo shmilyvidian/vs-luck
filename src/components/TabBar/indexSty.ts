@@ -1,45 +1,87 @@
-import { View, Image } from '@tarojs/components';
-import { css } from 'linaria'
-import { styled } from 'linaria/react'
-
-
-export const tabItem = css`
-    width: 26px;
-    height: 26px;
-`
+import { View } from "@tarojs/components";
+import { styled } from "linaria/react";
 
 export const IndexTabBar = styled(View)`
-    width: 270px;
-    height: 50px;
+  width: 270px;
+  height: 50px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  position: fixed;
+  bottom: 32px;
+  left: calc(100% - 270) / 2 + "px";
+  box-shadow: 0 2px 20px 0 rgba(0, 0, 0, 0.2);
+  border-radius: 33px;
+
+  .item-group-btn {
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
-    position: fixed;
-    bottom: 32px;
-    left: calc(100% - 270)/2 + 'px';
-    box-shadow: 0 2px 20px 0 rgba(0,0,0,0.20);
-    border-radius: 33px;
-`
-
-export const IndexTabBarIcon = styled(Image)`
-
-`
-
-export const tabItem_GBox = css`
-  width: 68px;
-  height: 68px;
-  animation: r0 1.4s linear infinite;
-    @keyframes r0 {
-    0% {
-        border-radius: 50%;
-        box-shadow: 0 0 8px 8px rgba(247, 206, 43, 0.2), 0 0 8px 8p rgba(247, 206, 43, 0.2), 0 0 8px 8px rgba(247, 206, 43, 0.2);
+    position: relative;
+    flex: 1;
+    height: 100%;
+    &-image {
+      width: 26px;
+      height: 26px;
     }
-    100% {
-        border-radius: 50%;
-        box-shadow: 0 0 16px 16px rgba(247, 206, 43, 0.2), 0 0 16px 16px rgba(247, 206, 43, 0.2), 0 0 16px 16px rgba(247, 206, 43, 0.2);
+  }
+
+  .item-group-btn:nth-child(2) {
+    ::before {
+      content: "";
+      display: inline-block;
+      width: 68px;
+      height: 68px;
+      border: 8px solid #fdf5d5;
+      background-color: #fbedb3;
+      border-radius: 100%;
+      position: absolute;
+      z-index: 1;
+      animation: inRipple 2s linear infinite;
+      @keyframes inRipple {
+        0% {
+          border-width: 0px;
+          transform: scale(1);
+        }
+        20% {
+          border-width: 8px;
+          transform: scale(1.2);
+        }
+        50% {
+          border-width: 8px;
+          transform: scale(1.2);
+        }
+        70% {
+          border-width: 0px;
+          transform: scale(1);
+        }
+        100% {
+          border-width: 0px;
+          transform: scale(1);
+        }
+      }
     }
-    100% {
-        border-radius: 50%;
-        box-shadow: 0 0 8px 8px rgba(247, 206, 43, 0.2), 0 0 8px 8px rgba(247, 206, 43, 0.2), 0 0 8px 8px rgba(247, 206, 43, 0.2);
+
+    ::after {
+      content: "";
+      display: inline-block;
+      width: 68px;
+      height: 68px;
+      position: absolute;
+      z-index: 2;
+      background-color: #f7ce2b;
+      border-radius: 100%;
     }
-`
+
+    width: 68px;
+    height: 68px;
+    max-width: 68px;
+    border-radius: 100%;
+    background-color: #f7ce2b;
+    .item-group-btn-image {
+      z-index: 3;
+      width: 28px;
+      height: 24px;
+    }
+  }
+`;

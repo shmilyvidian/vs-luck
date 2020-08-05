@@ -1,17 +1,14 @@
 import React, { Component } from 'react'
 import { css } from 'linaria'
-import { View } from '@tarojs/components'
+import { View ,Image} from '@tarojs/components'
 import {
-    tabItem,
-    tabItem_GBox,
-    IndexTabBar,
-    IndexTabBarIcon
+    IndexTabBar
   }  from './indexSty'
 import chat from '@/assets/images/chat.png'
 import chatGray from '@/assets/images/chat-gray.png'
 import activity from '@/assets/images/activity.png'
 import activityGray from '@/assets/images/activity-gray.png'
-import G from '@/assets/images/G.png'
+import heart from '@/assets/images/heart.png'
 
 const translateY800 = css`
   animation: translateY900 1s ease-in-out forwards;
@@ -26,7 +23,6 @@ const translateY800 = css`
 `
 
 type ITab = {
-    cls: string
     url: string
 }
 
@@ -45,31 +41,26 @@ export class TabBar extends Component<IProps, IState>{
           super(props)
           this.state = {
             tabs: [
-                { url: chatGray,cls: tabItem },
-                { url: G, cls: tabItem_GBox },
-                { url: activityGray, cls: tabItem }
+                { url: chatGray},
+                { url: heart},
+                { url: activityGray},
               ]
           }
       }
 
-      onClickTab = (currentTabIndex: number) => {
-
-        const { callback } = this.props
+      onClickTab = (selectTabIndex: number) => {
+        const { callback ,currentTabIndex} = this.props
+        if(currentTabIndex === selectTabIndex )return
         const isIncludeGray = (val) => val.url.includes('gray')
-
-        if (currentTabIndex !== 1){
-          const { tabs } = this.state
-          const tabIcons = [chat, G,activity]
-          const isHighlight = tabs.some(o=>isIncludeGray(o))
-
-          if (isHighlight) {
+        const { tabs} = this.state
+        const tabIcons = [chat, heart,activity]
+        const isHighlight = tabs.some(o=>isIncludeGray(o))
+        if (isHighlight) {
             tabs.forEach((o,i)=> i === 1 ? o.url : (o.url = isIncludeGray(o) ? o.url : o.url.substring(0, (o.url.indexOf('.png')))+'-gray.png'))
-            tabs[currentTabIndex].url =  tabIcons[currentTabIndex]
-          }
-          this.setState({tabs})
+            tabs[selectTabIndex].url =  tabIcons[selectTabIndex]
         }
-
-        typeof callback === 'function' && callback.call(null, currentTabIndex)
+        this.setState({tabs})
+        typeof callback === 'function' && callback.call(null, selectTabIndex)
       }
 
       render(){
@@ -83,10 +74,11 @@ export class TabBar extends Component<IProps, IState>{
                         tabs.map((o,i)=>{
                         return (
                             <View
+                                className="item-group-btn"
                                 key={i}
                                 onClick={this.onClickTab.bind(this, i)}
                             >
-                                <IndexTabBarIcon className={o.cls} src={o.url} />
+                                <Image className="item-group-btn-image" src={o.url} />
                             </View>
                         )
                         })
