@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, useCallback } from "react";
 import Taro from "@tarojs/taro";
 import { gennerateTaroNavigateParams } from "@/utils/urlParam";
 import { Image } from "@tarojs/components";
@@ -295,14 +295,14 @@ class Index extends Component<IProps, IState> {
         {this.renderBtn()}
 
         {this.renderTimeOutView()}
-        {typeof currentTabIndex === "number" && (
-          <TabBar
-            pageStatus={pageStatus}
+        <TabBar
+            isShow = {
+                pageStatus === EPageStatus.matchStatus ||
+                pageStatus === EPageStatus.homeStatus
+            }
             currentTabIndex={currentTabIndex}
             callback={this.onClickTab}
-          />
-        )}
-
+        />
         {this.renderTabContent()}
 
         {/* iphonex适配 */}

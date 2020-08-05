@@ -1,4 +1,4 @@
-import React, { PureComponent } from "react";
+import React, { useState, useEffect } from "react";
 import { css } from "linaria";
 import { View, Image } from "@tarojs/components";
 import { IndexTabBar } from "./indexSty";
@@ -12,37 +12,31 @@ const translateY800 = css`
   transform: translate(0, 800px);
 `;
 
-type ITab = {
-  url: string;
-};
-
 interface IProps {
-  pageStatus: string;
-  isShow: Boolean;
-  currentTabIndex: Number | undefined;
+  currentTabIndex: number;
+  isShow: Boolean
   callback: (currentTabIndex: number) => void;
 }
-interface IState {
-  tabs: Array<{
-    url: string;
-  }>;
-  initTranslateY800: string;
-}
 
-export class TabBar extends PureComponent<IProps, IState> {
-  constructor(props) {
-    super(props);
-    this.state = {
-      tabs: [{ url: chatGray }, { url: heart }, { url: activityGray }],
-      initTranslateY800: "",
-    };
-  }
+export const TabBar = React.memo(({ currentTabIndex, callback, isShow }: IProps) => {
+  const tab_arr = [{ url: chatGray }, { url: heart }, { url: activityGray }]
+  const [tabs, setTabs] = useState(tab_arr)
+  const [initTranslateY800, setTranslate] = useState('')
+  const [tabIndex, setTabIndex] = useState(currentTabIndex)
 
-  onClickTab = (selectTabIndex: number) => {
-    const { callback, currentTabIndex } = this.props;
-    if (currentTabIndex === selectTabIndex) return;
+  useEffect(() => {
+    setTranslate(translateY800)
+    const timeId = setTimeout(() => {
+      setTranslate('')
+    }, 300)
+    return () => {
+      clearInterval(timeId)
+    }
+  }, [])
+
+  useEffect(() => {
+    if (currentTabIndex === tabIndex) return;
     const isIncludeGray = (val) => val.url.includes("gray");
-    const { tabs } = this.state;
     const tabIcons = [chat, heart, activity];
     const isHighlight = tabs.some((o) => isIncludeGray(o));
     if (isHighlight) {
@@ -50,38 +44,30 @@ export class TabBar extends PureComponent<IProps, IState> {
         i === 1
           ? o.url
           : (o.url = isIncludeGray(o)
-              ? o.url
-              : o.url.substring(0, o.url.indexOf(".png")) + "-gray.png")
+            ? o.url
+            : o.url.substring(0, o.url.indexOf(".png")) + "-gray.png")
       );
-      tabs[selectTabIndex].url = tabIcons[selectTabIndex];
+      tabs[tabIndex].url = tabIcons[tabIndex];
     }
-    this.setState({ tabs });
-    typeof callback === "function" && callback.call(null, selectTabIndex);
-  };
+    setTabs(tabs)
+    typeof callback === "function" && callback.call(null, tabIndex);
+  }, [tabIndex])
 
-  componentWillMount() {
-    this.setState({ initTranslateY800: translateY800 });
-    setTimeout(() => {
-      this.setState({ initTranslateY800: "" });
-    }, 300);
-  }
-
-  render() {
-    const { tabs, initTranslateY800 } = this.state;
-    return (
-      <IndexTabBar className={initTranslateY800}>
-        {tabs.map((o, i) => {
+  return (isShow &&
+    <IndexTabBar className={initTranslateY800}>
+      {
+        tabs.map((o, i) => {
           return (
             <View
               className="item-group-btn"
               key={i}
-              onClick={this.onClickTab.bind(this, i)}
+              onClick={() => setTabIndex(i)}
             >
               <Image className="item-group-btn-image" src={o.url} />
             </View>
           );
-        })}
-      </IndexTabBar>
-    );
-  }
-}
+        })
+      }
+    </IndexTabBar>
+  )
+})

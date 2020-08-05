@@ -1,16 +1,16 @@
-import React, { Component } from 'react'
+import React, { useState, useEffect } from 'react'
 import { View, Image, Text } from '@tarojs/components'
 import { css } from 'linaria'
 
 
 import G from '@/assets/images/G.png'
 
-export const tipCss  = css`
+export const tipCss = css`
     margin-top:20px;
-    color:#f7ce2b
+    color:#f7ce2b;
 `
 
-export const timeoutView  = css`
+export const timeoutView = css`
     display:flex;
     flex-direction: column;
     align-items:center;
@@ -46,52 +46,33 @@ export const timeoutViewImageTime = css`
     color: #000;
     font-size: 44rpx;
     font-weight:700;
-
 `
 
 interface IProps {
     callback: () => void
 }
 
-type IState = {
-    time: Number,
-    timerID: number
-}
-
-export class TimeOutView extends Component<IProps,IState>{
-    constructor(props) {
-        super(props)
-        this.state = {
-            time:3,
-            timerID:0
+export const TimeOutView = ({ callback }: IProps) => {
+    const [time, setTime] = useState(3)
+    useEffect(() => {
+        const timerId = setInterval(() => {
+            if (time <= 1) {
+                clearInterval(timerId)
+                typeof callback === 'function' && callback.call(null)
+            } else {
+                setTime(() => time - 1)
+            }
+        }, 1000)
+        return () => {
+            clearInterval(timerId)
         }
-    }
-    componentWillMount(){
-        let {callback} = this.props
-        this.setState({
-            timerID:setInterval(()=> {
-                this.state.time--
-                if( this.state.time === 0){
-                    clearInterval(this.state.timerID)
-                    typeof callback === 'function' && callback.call(null)
-                }else{
-                    this.setState({time:this.state.time})
-                }
-            },1000)
-        })
-    };
-    componentWillUnmount(){
-        clearInterval(this.state.timerID)
-    }
-    render(){
-        const {time} = this.state
+    }, [time])
     return (
         <View className={timeoutView}>
-           <Image className={timeoutViewImage} src={G}>
+            <Image className={timeoutViewImage} src={G}>
                 <view className={timeoutViewImageTime}>{time}</view>
-           </Image>
-           <Text className={tipCss}>匹配中...</Text>
+            </Image>
+            <Text className={tipCss}>匹配中...</Text>
         </View>
     )
-    }
 }

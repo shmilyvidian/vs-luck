@@ -11,15 +11,11 @@ interface IProps {
     activityCardData: activityListDataType[]
 }
 
-export class ActivityCard extends React.PureComponent<IProps> {
-    constructor(IProps){
-        super(IProps)
-    }
-    onGoDetail = () => {
-        Taro.navigateTo(gennerateTaroNavigateParams("/pages/activity/detail/index", { from: 'activity' }))
-    }
-    render() {
-        const { activityCardData = [] } = this.props
+export function ActivityCard (props:IProps) {
+        const onGoDetail = () => {
+            Taro.navigateTo(gennerateTaroNavigateParams("/pages/activity/detail/index", { from: 'activity' }))
+        }
+        const { activityCardData = [] } = props
 
         return (
             <IndexMain>
@@ -27,11 +23,10 @@ export class ActivityCard extends React.PureComponent<IProps> {
                     activityCardData.length ?
                     activityCardData.map((item: activityListDataType,index:number) => {
                         return (
-                            <ActivityItem key={index} data={item} callback={this.onGoDetail}/>
+                            <ActivityItem key={index} data={item} callback={onGoDetail}/>
                         )
                     }) : <EmptyView text='啊哦，还没有活动快去匹配发现一下吧' />
                 }
             </IndexMain>
         )
-    }
 }

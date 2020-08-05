@@ -30,14 +30,12 @@ interface IProps {
     imgUrl?: string
 }
 
-export class EmptyView extends React.PureComponent<IProps> {
-
-    render(){
-        return (
-            <View className={emptyView}>
-                <Image className={empty_img} src={this.props.imgUrl || empty} />
-                <Text className={empty_text}>{this.props.text}</Text>
-            </View>
-        )
-    }
+export function EmptyView(props:IProps){
+    const {imgUrl, text} = props
+    return (
+        <View className={emptyView}>
+            <Image className={empty_img} src={imgUrl || empty} />
+            <Text className={empty_text}>{text}</Text>
+        </View>
+    )
 }

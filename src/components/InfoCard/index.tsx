@@ -1,9 +1,9 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { View, Text } from '@tarojs/components'
 import { InfoCardBox } from './indexSty'
 import { EmptyView } from '../EmptyView'
 
-type Icard =  {
+type Icard = {
     name: string
     time: string
     info: string
@@ -13,15 +13,14 @@ interface IProps {
     cardData: Icard[]
 }
 
-export class InfoCard extends Component<IProps>{
+export function InfoCard(props: IProps) {
 
-      render(){
-        const { cardData = [] } = this.props
-        return (
-            <View>
-                {
-                    cardData.length ?
-                    cardData.map((o,i)=>
+    const { cardData = [] } = props
+    return (
+        <View>
+            {
+                cardData.length ?
+                    cardData.map((o, i) =>
                         <InfoCardBox key={i}>
                             <View className="card_top">
                                 <Text className="card_top_name">{o.name}</Text>
@@ -32,8 +31,7 @@ export class InfoCard extends Component<IProps>{
                         </InfoCardBox>
                     ) :
                     <EmptyView text="啊哦，还没有好姻缘快去匹配发现一下吧" />
-                }
-            </View>
-        )
-    }
+            }
+        </View>
+    )
 }
