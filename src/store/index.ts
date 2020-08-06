@@ -12,16 +12,15 @@ type storeTypes = {
     activityStore: ActivityStore,
 }
 
-const stores: storeTypes = {
+const store: storeTypes = {
     commonStore,
     homeStore,
     messageStore,
     chartStore,
     activityStore
 }
-
-export default stores
+export default store
 
 export {
-    homeStore
+    homeStore, storeTypes
 }

@@ -1,4 +1,4 @@
-import { action } from 'mobx'
+import { action, decorate } from 'mobx'
 
 class CommonStore {
     @action public setData = (key, res, storeInstance,removeSpace = false) => {
@@ -27,6 +27,10 @@ class CommonStore {
     }
 }
 
+decorate(CommonStore, {
+    setData: action,
+    setDatas: action
+})
 
 export { CommonStore }
 
