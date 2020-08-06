@@ -25,7 +25,7 @@ class Index extends Component {
             className='test-h'
             indicatorColor='#999'
             indicatorActiveColor='#333'
-            next-margin='84px'
+            next-margin='108px'
             previous-margin='20px'
           >
             <SwiperItem>
