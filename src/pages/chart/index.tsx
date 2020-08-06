@@ -152,7 +152,6 @@ class Index extends Component {
             <Image className="voice" src={voice}></Image>
             <Input
               className="input"
-              focus
               value={inputString}
               adjust-position
               onConfirm={this.onInputInfo}
