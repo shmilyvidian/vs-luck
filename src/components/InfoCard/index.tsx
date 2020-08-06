@@ -1,7 +1,9 @@
 import React from 'react'
+import Taro from "@tarojs/taro";
 import { View, Text } from '@tarojs/components'
 import { InfoCardBox, LeftIn } from './indexSty'
 import { EmptyView } from '../EmptyView'
+import { gennerateTaroNavigateParams } from '@/utils/urlParam'
 
 type Icard = {
   name: string
@@ -14,6 +16,9 @@ interface IProps {
 }
 
 export function InfoCard(props: IProps) {
+  function goToChart() {
+    Taro.navigateTo(gennerateTaroNavigateParams("chart"));
+  }
 
   const { cardData = [] } = props
   return (
@@ -21,7 +26,7 @@ export function InfoCard(props: IProps) {
       {
         cardData.length ?
           cardData.map((o, i) =>
-            <LeftIn key={i} left={-i}>
+            <LeftIn key={i} left={-i} onClick={goToChart}>
               <InfoCardBox>
                 <View className="card_top">
                   <Text className="card_top_name">{o.name}</Text>
