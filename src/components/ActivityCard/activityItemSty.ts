@@ -36,4 +36,5 @@ export const ItemWrapper = styled(View)`
   box-sizing: border-box;
   padding: 12px;
   margin-bottom: 12px;
+  
 `
