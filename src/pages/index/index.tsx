@@ -295,14 +295,15 @@ class Index extends Component<IProps, IState> {
         {this.renderBtn()}
 
         {this.renderTimeOutView()}
-        <TabBar
-            isShow = {
-                pageStatus === EPageStatus.matchStatus ||
-                pageStatus === EPageStatus.homeStatus
-            }
+        {
+          ( pageStatus === EPageStatus.matchStatus ||
+            pageStatus === EPageStatus.homeStatus) &&
+            <TabBar
             currentTabIndex={currentTabIndex}
             callback={this.onClickTab}
         />
+        }
+       
         {this.renderTabContent()}
 
         {/* iphonex适配 */}

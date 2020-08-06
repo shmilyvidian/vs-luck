@@ -9,16 +9,23 @@ import activityGray from "@/assets/images/activity-gray.png";
 import heart from "@/assets/images/heart.png";
 
 const translateY800 = css`
-  transform: translate(0, 800px);
+    animation: translateY800 1s ease-in-out forwards;
+    @keyframes translateY800 {
+      from {
+        transform: translate(0, 800px);
+      }
+      to {
+        transform: translate(0, 0);
+      }
+    }
 `;
 
 interface IProps {
   currentTabIndex: number;
-  isShow: Boolean
   callback: (currentTabIndex: number) => void;
 }
 
-export const TabBar = React.memo(({ currentTabIndex, callback, isShow }: IProps) => {
+export const TabBar = React.memo(({ currentTabIndex, callback }: IProps) => {
   const tab_arr = [{ url: chatGray }, { url: heart }, { url: activityGray }]
   const [tabs, setTabs] = useState(tab_arr)
   const [initTranslateY800, setTranslate] = useState('')
@@ -26,12 +33,6 @@ export const TabBar = React.memo(({ currentTabIndex, callback, isShow }: IProps)
 
   useEffect(() => {
     setTranslate(translateY800)
-    const timeId = setTimeout(() => {
-      setTranslate('')
-    }, 300)
-    return () => {
-      clearInterval(timeId)
-    }
   }, [])
 
   useEffect(() => {
@@ -50,10 +51,10 @@ export const TabBar = React.memo(({ currentTabIndex, callback, isShow }: IProps)
       tabs[tabIndex].url = tabIcons[tabIndex];
     }
     setTabs(tabs)
+    setTranslate('')
     typeof callback === "function" && callback.call(null, tabIndex);
   }, [tabIndex])
-
-  return (isShow &&
+  return (
     <IndexTabBar className={initTranslateY800}>
       {
         tabs.map((o, i) => {

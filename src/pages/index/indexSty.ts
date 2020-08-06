@@ -124,7 +124,7 @@ export const SexChoiceView = styled(View)`
 `
 
 
-export const SignBtn = styled(View)`
+export const SignBtn = styled(View)<{active}>`
     width: 180px;
     height: 40px;
     background-color: ${props => props.active ? '#F7CE2B' : '#B9BBBE'};

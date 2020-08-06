@@ -60,7 +60,7 @@ export const TimeOutView = ({ callback }: IProps) => {
                 clearInterval(timerId)
                 typeof callback === 'function' && callback.call(null)
             } else {
-                setTime(() => time - 1)
+                setTime((time) => time - 1)
             }
         }, 1000)
         return () => {
