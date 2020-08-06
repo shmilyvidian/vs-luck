@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Taro from "@tarojs/taro";
 import { View, Input, Image, ScrollView } from "@tarojs/components";
 import { observer, inject } from "mobx-react";
+import { IphonexView } from "@/components/IphonexView";
 import "./index.scss";
 
 // 图片
@@ -170,6 +171,7 @@ class Index extends Component {
           ) : null}
         </View>
         {/* end of 文字输入 */}
+        <IphonexView />
       </View>
     );
   }
