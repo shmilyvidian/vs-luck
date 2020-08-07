@@ -7,35 +7,36 @@ import male from "@/assets/images/male.png";
 import maleGray from "@/assets/images/male-gray.png";
 
 type IProps = {
-    callback: (sex:number) => void
+  callback: (sex: number) => void
 }
-export const SexSelect = ({callback}:IProps) =>{
-    const activeSexs = [male, female]
-    const graySexs = [maleGray, femaleGray]
-    const [sexs, setSexs] = useState(graySexs)
-    const [currentSexIndex, setCurrentSexIndex] = useState(undefined)
+export const SexSelect = ({ callback }: IProps) => {
+  const activeSexs = [male, female]
+  const graySexs = [maleGray, femaleGray]
+  const [sexs, setSexs] = useState<string[]>(graySexs)
+  const [currentSexIndex, setCurrentSexIndex] = useState<number | undefined>()
 
-    useEffect(()=>{
-        setSexs(graySexs)
-        console.log(currentSexIndex,'v====1===s',sexs)
-        sexs[currentSexIndex] = activeSexs[currentSexIndex];
-        setSexs(sexs)
-        console.log(currentSexIndex,'v====2===s',sexs)
-        typeof callback === 'function' && callback.call(null, currentSexIndex)
-    },[currentSexIndex])
 
-    return (
-        <SexChoiceView>
-            {sexs.map((o, i)=> {
-              return [
-                <Image
-                  key={o}
-                  src={o}
-                  className="item-choice"
-                  onClick={() => setCurrentSexIndex(i)}
-                />
-              ];
-            })}
-          </SexChoiceView>
-    )
+  useEffect(() => {
+    sexs.forEach((_, i) => (sexs[i] = graySexs[i]))
+    sexs[currentSexIndex] = activeSexs[currentSexIndex]
+    typeof callback === 'function' && callback.call(null, currentSexIndex)
+    setSexs(JSON.parse(JSON.stringify(sexs)))
+  }, [currentSexIndex])
+
+  return (
+    <SexChoiceView>
+      {
+        sexs.map((o, i) => {
+          return (
+            <Image
+              key={o}
+              src={o}
+              className="item-choice"
+              onClick={() => setCurrentSexIndex(i)}
+            />
+          )
+        })
+      }
+    </SexChoiceView>
+  )
 }

@@ -1,7 +1,6 @@
-import React, { Component, useCallback, useState, useEffect } from "react";
+import React, { Component, useCallback, useState, useEffect, useReducer } from "react";
 import Taro from "@tarojs/taro";
 import { gennerateTaroNavigateParams } from "@/utils/urlParam";
-import { Image, View } from "@tarojs/components";
 import { observer, MobXProviderContext } from "mobx-react";
 import biggerLogo from "@/assets/images/logo-bigger.png";
 
@@ -20,7 +19,6 @@ import {
   IndexMain,
   IndexLogo,
   NickNameInput,
-  SexChoiceView,
   SignBtn,
   translateY90,
   translateY60,
@@ -40,11 +38,11 @@ export enum EPageStatus {
 }
 
 
-const  Index  = observer(()=> {
+const Index  = observer(()=> {
   const store = useStoreData()
-  const [pageStatus, setPageStatus] = useState(EPageStatus.signStatus)
-  const [startMatch, setStartMatch] = useState(false)
-  const [currentTabIndex, setTabIndex] = useState()
+  const [pageStatus, setPageStatus] = useState<string>(EPageStatus.signStatus)
+  const [startMatch, setStartMatch] = useState<boolean>(false)
+  const [currentTabIndex, setTabIndex] = useState<number>()
 
   const onClickSelectSex = (index:number) => {
     store.homeStore.setChoices(index)
@@ -70,17 +68,16 @@ const  Index  = observer(()=> {
     });
     setPageStatus(EPageStatus.matchStatus)
     setTabIndex(1)
-    // Taro.navigateTo(gennerateTaroNavigateParams("home", { from: 'sign' }))
   };
 
   // // 输入昵称
   const onInput = (e) => {
-    const { setData } = store.commonStore;
-    setData("userInfo.nickname", e.target.value, store.homeStore);
+    const { setData } = store.commonStore
+    setData("userInfo.nickname", e.target.value, store.homeStore)
   };
 
   const onClickTab = (currentTabIndex: number) => {
-    const NavigationBarTitle = ["消息", "平安好姻缘", "活动"];
+    const NavigationBarTitle = ["消息", "平安好姻缘", "活动"]
 
     setTabIndex(currentTabIndex)
     setPageStatus(currentTabIndex === 1
@@ -143,15 +140,12 @@ const  Index  = observer(()=> {
     switch (pageStatus) {
       case EPageStatus.signStatus:
         return  (
-          <View>
             <NickNameInput
               placeholder="请输入昵称"
               placeholderClass="nameInput-placeholder"
               onInput={onInput}
             />
-            <SexSelect callback={onClickSelectSex} />
-          </View>
-        )
+          )
         break;
       default:
         return null;
@@ -240,9 +234,12 @@ const  Index  = observer(()=> {
 
         {renderSignFrom()}
 
+        {pageStatus === EPageStatus.signStatus && <SexSelect callback={onClickSelectSex} />}
+
         {renderBtn()}
 
         {renderTimeOutView()}
+
         {
           ( pageStatus === EPageStatus.matchStatus ||
             pageStatus === EPageStatus.homeStatus) &&
@@ -251,6 +248,7 @@ const  Index  = observer(()=> {
               callback={onClickTab}
             />
         }
+
         {renderTabContent()}
 
         {/* iphonex适配 */}

@@ -25,11 +25,15 @@ interface IProps {
   callback: (currentTabIndex: number) => void;
 }
 
+type ITabs = {
+  url: string
+}
+
 export const TabBar = React.memo(({ currentTabIndex, callback }: IProps) => {
   const tab_arr = [{ url: chatGray }, { url: heart }, { url: activityGray }]
-  const [tabs, setTabs] = useState(tab_arr)
-  const [initTranslateY800, setTranslate] = useState(translateY800)
-  const [tabIndex, setTabIndex] = useState(currentTabIndex)
+  const [tabs, setTabs] = useState<ITabs[]>(tab_arr)
+  const [initTranslateY800, setTranslate] = useState<string>(translateY800)
+  const [tabIndex, setTabIndex] = useState<number>(currentTabIndex)
 
   useEffect(() => {
     if (currentTabIndex === tabIndex) return;
