@@ -49,15 +49,16 @@ export const translateY60 = css`
 export const translateY90 = css`
   animation: translateY90 .5s linear forwards;
   margin-bottom: 208px;
-  width: 272px;
-  height: 64px;
+
   @keyframes translateY90 {
       from {
-        transform:  translate(0, -152px);
-        margin-top: 0
+            transform:  translate(0, -152px);
+            margin-top: 0
       }
       to {
-          transform:  translate(0, 167px);
+            width: 272px;
+            height: 64px;
+            transform:  translate(0, 167px);
       }
     }
 `

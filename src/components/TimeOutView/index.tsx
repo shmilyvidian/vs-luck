@@ -53,7 +53,7 @@ interface IProps {
 }
 
 export const TimeOutView = ({ callback }: IProps) => {
-    const [time, setTime] = useState(3)
+    const [time, setTime] = useState<number>(3)
     useEffect(() => {
         const timerId = setInterval(() => {
             if (time <= 1) {
