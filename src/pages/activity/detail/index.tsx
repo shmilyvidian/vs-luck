@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { View, Image, Swiper, SwiperItem } from '@tarojs/components'
 
 import activeImg from '@/assets/images/test.jpeg'
+import qrcode from '@/assets/images/qrcode.png'
 
 import './index.scss'
 
@@ -64,7 +65,7 @@ class Index extends Component {
              报名方式
            </View>
            <View className='section-content'>扫描下方二维码报名</View>
-           <Image className="qrcode" src={activeImg}></Image>
+           <Image className="qrcode" src={qrcode}></Image>
          </View>
          {/* end of qrcode */}
       </View>

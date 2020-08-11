@@ -41,7 +41,7 @@ export const timeoutViewImageTime = css`
     position: absolute;
     left: 50%;
     top: 50%;
-    transform: translate(-50%,-50%);
+    transform: translate(-70%,-60%);
     z-index: 2;
     color: #000;
     font-size: 44rpx;
