@@ -87,8 +87,9 @@ export const IndexLogo = styled(Image)`
 
 export const NickNameInput = styled(Input)`
     width: 140px;
-    padding-left: 60px;
     padding-bottom: 6px;
+    text-align: center;
+    font-weight: bold;
     border-bottom: 1px solid #B9BBBE;
     animation: translateY900 1s ease-in-out forwards;
 

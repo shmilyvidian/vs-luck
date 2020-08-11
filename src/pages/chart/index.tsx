@@ -45,23 +45,7 @@ class Index extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      infoList: [
-        {
-          date: "12:00",
-          info: "你好，认识一下好不好",
-          type: "receive",
-        },
-        {
-          date: "12:04",
-          info: "好鸭好鸭，我叫小雅",
-          type: "send",
-        },
-        {
-          date: "",
-          info: "晚上可以一起吃个饭吗？",
-          type: "receive",
-        },
-      ],
+      infoList: [],
       inputString: "",
       scrollInfo: "",
       showAddInfo: false,
