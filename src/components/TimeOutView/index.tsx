@@ -72,7 +72,7 @@ export const TimeOutView = ({ callback }: IProps) => {
             <Image className={timeoutViewImage} src={G}>
                 <view className={timeoutViewImageTime}>{time}</view>
             </Image>
-            <Text className={tipCss}>匹配中...</Text>
+            <Text className={tipCss}>匹配小可爱与你聊...</Text>
         </View>
     )
 }

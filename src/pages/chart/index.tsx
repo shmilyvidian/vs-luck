@@ -12,6 +12,7 @@ import emoji from "@/assets/images/emoji.png";
 import picImg from "@/assets/images/pic.png";
 import shootImg from "@/assets/images/shoot.png";
 import locationImg from "@/assets/images/location.png";
+import store from "@/store/index";
 
 type propsType = {
   store: {
@@ -67,10 +68,10 @@ class Index extends Component {
     };
   }
 
-  componentDidMount() {
+  componentDidMount(){
     // 根据外部传入切换顶部标题
     Taro.setNavigationBarTitle({
-      title: this.props.userName ? this.props.userName : "聊天",
+      title: store.chartStore.chartName ? store.chartStore.chartName : "聊天",
     });
   }
 

@@ -4,6 +4,20 @@ import { View, Text } from '@tarojs/components'
 import { InfoCardBox, LeftIn } from './indexSty'
 import { EmptyView } from '../EmptyView'
 import { gennerateTaroNavigateParams } from '@/utils/urlParam'
+import { observer, MobXProviderContext } from "mobx-react";
+
+function useStores() {
+  return React.useContext(MobXProviderContext)
+}
+
+function useStoreData() {
+  const { store } = useStores()
+  return {
+    commonStore: store.commonStore,
+    homeStore: store.homeStore,
+    chartStore: store.chartStore,
+  }
+}
 
 type Icard = {
   name: string
@@ -16,8 +30,12 @@ interface IProps {
 }
 
 export function InfoCard(props: IProps) {
-  function goToChart() {
-    Taro.navigateTo(gennerateTaroNavigateParams("chart"));
+  const store = useStoreData()
+
+  // 跳转聊天页
+  function goToChart(name) {
+    store.chartStore.setChartName(name)
+    Taro.navigateTo(gennerateTaroNavigateParams("chart", { name: name }));
   }
 
   const { cardData = [] } = props
@@ -26,7 +44,7 @@ export function InfoCard(props: IProps) {
       {
         cardData.length ?
           cardData.map((o, i) =>
-            <LeftIn key={i} left={-i} onClick={goToChart}>
+            <LeftIn key={i} left={-i} onClick={goToChart.bind(this, o.name)}>
               <InfoCardBox>
                 <View className="card_top">
                   <Text className="card_top_name">{o.name}</Text>

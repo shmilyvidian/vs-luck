@@ -13,6 +13,7 @@ function useStoreData() {
   return {
     commonStore: store.commonStore,
     homeStore: store.homeStore,
+    chartStore: store.chartStore,
   }
 }
 import {
@@ -38,13 +39,13 @@ export enum EPageStatus {
 }
 
 
-const Index  = observer(()=> {
+const Index = observer(() => {
   const store = useStoreData()
   const [pageStatus, setPageStatus] = useState<string>(EPageStatus.signStatus)
   const [startMatch, setStartMatch] = useState<boolean>(false)
   const [currentTabIndex, setTabIndex] = useState<number>()
 
-  const onClickSelectSex = (index:number) => {
+  const onClickSelectSex = (index: number) => {
     store.homeStore.setChoices(index)
   }
 
@@ -136,16 +137,16 @@ const Index  = observer(()=> {
   };
 
   // 名称和性别选择渲染
-  function renderSignFrom ()  {
+  function renderSignFrom() {
     switch (pageStatus) {
       case EPageStatus.signStatus:
-        return  (
-            <NickNameInput
-              placeholder="请输入昵称"
-              placeholderClass="nameInput-placeholder"
-              onInput={onInput}
-            />
-          )
+        return (
+          <NickNameInput
+            placeholder="请输入昵称"
+            placeholderClass="nameInput-placeholder"
+            onInput={onInput}
+          />
+        )
         break;
       default:
         return null;
@@ -224,37 +225,38 @@ const Index  = observer(()=> {
   };
   // 匹配完成
   const timeOutSuccess = () => {
+    store.chartStore.setChartName('小可爱')
     Taro.navigateTo(gennerateTaroNavigateParams("chart"));
     setStartMatch(false)
   }
 
-    return (
-      <IndexMain>
-        {renderLogoView()}
+  return (
+    <IndexMain>
+      {renderLogoView()}
 
-        {renderSignFrom()}
+      {renderSignFrom()}
 
-        {pageStatus === EPageStatus.signStatus && <SexSelect callback={onClickSelectSex} />}
+      {pageStatus === EPageStatus.signStatus && <SexSelect callback={onClickSelectSex} />}
 
-        {renderBtn()}
+      {renderBtn()}
 
-        {renderTimeOutView()}
+      {renderTimeOutView()}
 
-        {
-          ( pageStatus === EPageStatus.matchStatus ||
-            pageStatus === EPageStatus.homeStatus) &&
-            <TabBar
-              currentTabIndex={currentTabIndex}
-              callback={onClickTab}
-            />
-        }
+      {
+        (pageStatus === EPageStatus.matchStatus ||
+          pageStatus === EPageStatus.homeStatus) &&
+        <TabBar
+          currentTabIndex={currentTabIndex}
+          callback={onClickTab}
+        />
+      }
 
-        {renderTabContent()}
+      {renderTabContent()}
 
-        {/* iphonex适配 */}
-        <IphonexView />
-      </IndexMain>
-    );
+      {/* iphonex适配 */}
+      <IphonexView />
+    </IndexMain>
+  );
 })
 
 export default Index
