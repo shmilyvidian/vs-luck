@@ -4,6 +4,7 @@ import { gennerateTaroNavigateParams } from "@/utils/urlParam";
 import { observer, MobXProviderContext } from "mobx-react";
 import biggerLogo from "@/assets/images/logo-bigger.png";
 
+
 function useStores() {
   return React.useContext(MobXProviderContext)
 }
@@ -24,6 +25,7 @@ import {
   translateY90,
   translateY60,
   matchBox,
+  LogoHeight
 } from "./indexSty";
 import { InfoCard } from "@/components/InfoCard";
 import { IphonexView } from "@/components/IphonexView";
@@ -101,14 +103,16 @@ const Index = observer(() => {
       case EPageStatus.matchStatus:
         return (
           !startMatch && (
-            <IndexLogo
-              className={
-                pageStatus === EPageStatus.signStatus
-                  ? translateY60
-                  : translateY90
-              }
-              src={biggerLogo}
-            />
+            <LogoHeight>
+              <IndexLogo
+                className={
+                  pageStatus === EPageStatus.signStatus
+                    ? translateY60
+                    : translateY90
+                }
+                src={biggerLogo}
+              />
+            </LogoHeight>
           )
         );
         break;

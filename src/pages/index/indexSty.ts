@@ -135,8 +135,9 @@ export const SignBtn = styled(View)<{active}>`
     font-size: 16px;
     color: #fff;
     letter-spacing: 0;
+    opacity: 0;
     ${center};
-    animation: fadeIn 1.2s linear forwards;
+    animation: fadeIn 1.2s linear forwards 1s;
 
     @keyframes fadeIn {
         from {
@@ -146,4 +147,8 @@ export const SignBtn = styled(View)<{active}>`
             opacity: 1;
         }
     }
+`
+
+export const LogoHeight = styled(View)`
+    height: 260px;
 `
