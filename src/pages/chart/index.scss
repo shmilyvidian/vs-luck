@@ -78,7 +78,6 @@
 .input {
   background: #F2F2F2;
   border-radius: 20px;
-  border-radius: 15.5px;
   width: 231px;
   height: 30px;
   box-sizing: border-box;
@@ -125,3 +124,17 @@
 }
 
 // end of 额外功能
+
+.voice-input{
+  background: #F2F2F2;
+  width: 231px;
+  height: 30px;
+  box-sizing: border-box;
+  padding: 0 10px;
+  display: flex;
+  border-radius: 20px;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+  color: #7B7F82;
+}

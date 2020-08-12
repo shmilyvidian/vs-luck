@@ -3,16 +3,17 @@ import Taro from "@tarojs/taro";
 import { View, Input, Image, ScrollView } from "@tarojs/components";
 import { observer, inject } from "mobx-react";
 import { IphonexView } from "@/components/IphonexView";
+import store from "@/store/index";
 import "./index.scss";
 
 // 图片
 import voice from "@/assets/images/voice.png";
+import keyboard from "@/assets/images/keyboard.png";
 import add from "@/assets/images/add.png";
 import emoji from "@/assets/images/emoji.png";
 import picImg from "@/assets/images/pic.png";
 import shootImg from "@/assets/images/shoot.png";
 import locationImg from "@/assets/images/location.png";
-import store from "@/store/index";
 
 type propsType = {
   store: {
@@ -32,7 +33,8 @@ type stateType = {
   inputString: string;
   scrollInfo: string;
   showAddInfo: boolean;
-  chartMap: Array<any>
+  chartMap: Array<any>;
+  toggleVoice: boolean;
 };
 
 interface Index {
@@ -50,17 +52,18 @@ class Index extends Component {
       inputString: "",
       scrollInfo: "",
       showAddInfo: false,
-      chartMap:[
+      chartMap: [
         '你好，我叫小明。',
         '很高兴认识你！',
         '茫茫人海里相遇是我们的缘分！',
         '现在是2077年。',
         '今天28度'
-      ]
+      ],
+      toggleVoice: false
     };
   }
 
-  componentDidMount(){
+  componentDidMount() {
     // 根据外部传入切换顶部标题
     Taro.setNavigationBarTitle({
       title: store.chartStore.chartName ? store.chartStore.chartName : "聊天",
@@ -80,7 +83,7 @@ class Index extends Component {
 
     infoList.push({
       date: "",
-      info: this.state.chartMap[Math.floor(Math.random()*5)] ,
+      info: this.state.chartMap[Math.floor(Math.random() * 5)],
       type: "receive",
     });
 
@@ -104,8 +107,20 @@ class Index extends Component {
     // 点击加号 将聊天记录滚动到底部 避免遮挡
   };
 
+  // 切换语音按钮
+  onChangeVoice = () => {
+    this.setState({
+      toggleVoice: !this.state.toggleVoice
+    })
+  }
+
   render() {
-    const { infoList, inputString, scrollInfo, showAddInfo } = this.state;
+    const {
+      infoList,
+      inputString,
+      scrollInfo,
+      showAddInfo,
+      toggleVoice } = this.state;
 
     // 显示信息
     const infoListTpl = infoList.map((item, index) => {
@@ -143,13 +158,15 @@ class Index extends Component {
         {/* 文字输入 */}
         <View className="fixed">
           <View className="input-wrapper">
-            <Image className="voice" src={voice}></Image>
-            <Input
-              className="input"
-              value={inputString}
-              adjust-position
-              onConfirm={this.onInputInfo}
-            ></Input>
+            <Image className="voice" src={toggleVoice ? keyboard : voice} onClick={this.onChangeVoice}></Image>
+            {
+              toggleVoice ? <View className="voice-input">按住说话</View> : <Input
+                className="input"
+                value={inputString}
+                adjust-position
+                onConfirm={this.onInputInfo}
+              ></Input>
+            }
             <Image className="emoji" src={emoji}></Image>
             <Image className="add" src={add} onClick={this.onAddInfo}></Image>
           </View>
