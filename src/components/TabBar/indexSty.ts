@@ -37,6 +37,7 @@ export const IndexTabBar = styled(View)`
       height: 68px;
       border: 8px solid #fdf5d5;
       background-color: #fbedb3;
+      opacity: 0.6;
       border-radius: 100%;
       position: absolute;
       z-index: 1;
