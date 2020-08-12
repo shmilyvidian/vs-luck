@@ -1,7 +1,7 @@
 import React from 'react'
 import Taro from "@tarojs/taro";
 import { View, Text } from '@tarojs/components'
-import { InfoCardBox, LeftIn } from './indexSty'
+import { InfoCardBox, LeftIn,CardWrapper } from './indexSty'
 import { EmptyView } from '../EmptyView'
 import { gennerateTaroNavigateParams } from '@/utils/urlParam'
 import { observer, MobXProviderContext } from "mobx-react";
@@ -40,7 +40,7 @@ export function InfoCard(props: IProps) {
 
   const { cardData = [] } = props
   return (
-    <View>
+    <CardWrapper>
       {
         cardData.length ?
           cardData.map((o, i) =>
@@ -57,6 +57,6 @@ export function InfoCard(props: IProps) {
           ) :
           <EmptyView text="啊哦，还没有好姻缘快去匹配发现一下吧" />
       }
-    </View>
+    </CardWrapper>
   )
 }

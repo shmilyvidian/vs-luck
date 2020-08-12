@@ -38,12 +38,12 @@ export const InfoCardBox = styled(View)`
     }
 `
 
-export const LeftIn = styled(View)<{left: any}>`
+export const LeftIn = styled(View) <{ left: any }>`
 animation: leftIn 1s ease;
 
 @keyframes leftIn {
   from {
-    transform: translatex(${ props => ((props.left - 1)  * 1000)}px);
+    transform: translatex(${ props => ((props.left - 1) * 1000)}px);
     opacity: 0;
   }
 
@@ -53,4 +53,11 @@ animation: leftIn 1s ease;
   }
 }
 `
+
+
+export const CardWrapper = styled(View)`
+  padding-bottom: 20px;
+`
+
+
 
