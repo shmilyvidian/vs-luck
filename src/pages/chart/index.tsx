@@ -32,6 +32,7 @@ type stateType = {
   inputString: string;
   scrollInfo: string;
   showAddInfo: boolean;
+  chartMap: Array<any>
 };
 
 interface Index {
@@ -49,6 +50,13 @@ class Index extends Component {
       inputString: "",
       scrollInfo: "",
       showAddInfo: false,
+      chartMap:[
+        '你好，我叫小明。',
+        '很高兴认识你！',
+        '茫茫人海里相遇是我们的缘分！',
+        '现在是2077年。',
+        '今天28度'
+      ]
     };
   }
 
@@ -72,7 +80,7 @@ class Index extends Component {
 
     infoList.push({
       date: "",
-      info: (Math.random() * 100).toFixed(2),
+      info: this.state.chartMap[Math.floor(Math.random()*5)] ,
       type: "receive",
     });
 
