@@ -53,8 +53,17 @@ interface IProps {
 }
 
 export const TimeOutView = ({ callback }: IProps) => {
+
+
     const [time, setTime] = useState<number>(3)
+    let [tips, setTips] = useState<string>('')
+
+
     useEffect(() => {
+        // 倒计时为1时显示提示
+        if(time === 1){
+            setTips(tips = '匹配小可爱与你聊...')
+        }
         const timerId = setInterval(() => {
             if (time <= 1) {
                 clearInterval(timerId)
@@ -72,7 +81,7 @@ export const TimeOutView = ({ callback }: IProps) => {
             <Image className={timeoutViewImage} src={G}>
                 <view className={timeoutViewImageTime}>{time}</view>
             </Image>
-            <Text className={tipCss}>匹配小可爱与你聊...</Text>
+    <Text className={tipCss}>{tips}</Text>
         </View>
     )
 }
