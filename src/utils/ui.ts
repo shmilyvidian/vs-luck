@@ -8,7 +8,7 @@ export const isIphoneX = () => {
   }
   console.log(systemInfo.brand,systemInfo.model)
   console.log(systemInfo.model.search('iPhone X') !== -1)
-  return systemInfo.model.search('iPhone X') !== -1;
+  return systemInfo.model.search('iPhone X') !== -1 || systemInfo.model.search('iPhone 11') !== -1;
 };
 export const isAndroid =() =>{
 
