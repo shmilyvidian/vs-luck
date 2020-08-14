@@ -6,12 +6,9 @@ export const isIphoneX = () => {
   if (!systemInfo) {
     systemInfo = Taro.getSystemInfoSync();
   }
-  alert(systemInfo.model)
-  if (systemInfo.brand === "iPhone" && (systemInfo.model ==='iphonrx')) {
-    return true;
-  }
-  
-  return false;
+  console.log(systemInfo.brand,systemInfo.model)
+  console.log(systemInfo.model.search('iPhone X') !== -1)
+  return systemInfo.model.search('iPhone X') !== -1;
 };
 export const isAndroid =() =>{
 

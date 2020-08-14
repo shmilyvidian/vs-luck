@@ -7,6 +7,7 @@ import chatGray from "@/assets/images/chat-gray.png";
 import activity from "@/assets/images/activity.png";
 import activityGray from "@/assets/images/activity-gray.png";
 import heart from "@/assets/images/heart.png";
+import { isIphoneX } from '@/utils/ui'
 
 const translateY800 = css`
     animation: translateY800 1s ease-in-out forwards;
@@ -19,6 +20,10 @@ const translateY800 = css`
       }
     }
 `;
+
+const iphoneBottom = css`
+    bottom: 60px;
+`
 
 interface IProps {
   currentTabIndex: number;
@@ -55,7 +60,7 @@ export const TabBar = React.memo(({ currentTabIndex, callback }: IProps) => {
     typeof callback === "function" && callback.call(null, tabIndex);
   }, [tabIndex])
   return (
-    <IndexTabBar className={initTranslateY800}>
+    <IndexTabBar className={`initTranslateY800 +  ${isIphoneX() ? iphoneBottom : ''} `}>
       {
         tabs.map((o, i) => {
           return (

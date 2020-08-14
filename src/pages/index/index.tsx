@@ -4,7 +4,6 @@ import { gennerateTaroNavigateParams } from "@/utils/urlParam";
 import { observer, MobXProviderContext } from "mobx-react";
 import biggerLogo from "@/assets/images/logo-bigger.png";
 
-
 function useStores() {
   return React.useContext(MobXProviderContext)
 }

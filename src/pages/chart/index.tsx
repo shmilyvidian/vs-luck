@@ -5,6 +5,7 @@ import { observer, inject } from "mobx-react";
 import { IphonexView } from "@/components/IphonexView";
 import store from "@/store/index";
 import "./index.scss";
+import { css } from "linaria";
 
 // 图片
 import voice from "@/assets/images/voice.png";
@@ -14,6 +15,14 @@ import emoji from "@/assets/images/emoji.png";
 import picImg from "@/assets/images/pic.png";
 import shootImg from "@/assets/images/shoot.png";
 import locationImg from "@/assets/images/location.png";
+import { isIphoneX } from '@/utils/ui'
+
+const iphoneBottom = css`
+    padding-bottom: 20px;
+`
+const ohterBottom = css`
+    padding: 13px 0 40px 30px;
+`
 
 type propsType = {
   store: {
@@ -156,8 +165,9 @@ class Index extends Component {
         </ScrollView>
         {/* end of 对话框 */}
         {/* 文字输入 */}
-        <View className="fixed">
-          <View className="input-wrapper">
+
+        <View className='fixed'>
+          <View className={`'input-wrapper' + ${(isIphoneX() && !showAddInfo) ? iphoneBottom : ''}`}>
             <Image className="voice" src={toggleVoice ? keyboard : voice} onClick={this.onChangeVoice}></Image>
             {
               toggleVoice ? <View className="voice-input">按住说话</View> : <Input
@@ -165,6 +175,7 @@ class Index extends Component {
                 value={inputString}
                 adjust-position
                 onConfirm={this.onInputInfo}
+                cursor-spacing={10}
               ></Input>
             }
             <Image className="emoji" src={emoji}></Image>
@@ -173,7 +184,7 @@ class Index extends Component {
 
           {/* 判断是否显示功能 */}
           {showAddInfo ? (
-            <View className="other-function">
+            <View className={`'other-function' + ${isIphoneX() ? ohterBottom : ''}`}>
               <Image className="function-icon" src={picImg}></Image>
               <Image className="function-icon" src={shootImg}></Image>
               <Image className="function-icon" src={locationImg}></Image>
