@@ -6,7 +6,8 @@ export const isIphoneX = () => {
   if (!systemInfo) {
     systemInfo = Taro.getSystemInfoSync();
   }
-  if (systemInfo.screenHeight >= 812 && systemInfo.brand === "iPhone") {
+  alert(systemInfo.model)
+  if (systemInfo.brand === "iPhone" && (systemInfo.model ==='iphonrx')) {
     return true;
   }
   
