@@ -37,6 +37,8 @@ export const gennerateTaroNavigateParams = (
     // 缩写 默认补全处理
     path = `/pages/${path}/index`;
   }
+  console.log(22);
+  
 
   return {
     url: gennerateQueryUrlPath(path, query),
